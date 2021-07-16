@@ -14,9 +14,20 @@ module.exports = {
         filename: 'main.js',
         path: path.resolve(__dirname, 'dist')
     },
+    module: {
+        rules: [{
+                test: /\.css$/,
+                use: ["style-loader", "css-loader"]
+            },
+            {
+                test: /\.(jpe?g|png)$/i,
+                type: "asset",
+            },
+        ]
+    },
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/template.html'
         })
-    ]
+    ],
 }

@@ -1,0 +1,30 @@
+html,
+body {
+    margin: 0;
+    height: 100%;
+}
+
+#main {
+    display: flex;
+    height: 100%;
+}
+
+nav {
+    margin: 1em 5em;
+    height: 100%;
+}
+
+#content {
+    width: 100%;
+}
+
+.task {
+    display: flex;
+    border: 1px solid black;
+    margin: 1em;
+    width:
+}
+
+.taskName {
+    margin-right: 2em;
+}
