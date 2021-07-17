@@ -13,16 +13,24 @@
     <div id="main">
         <nav>
 
-            <div id="mainNav">
-                <h3 id="inbox">Inbox</h3>
-                <h3 id="today">Today</h3>
-            </div>
-
             <div id="projects">
 
             </div>
 
         </nav>
+
+        <form action="taskForm" id="taskForm">
+            <section>
+                <label for="taskName">Task</label>
+                <input type="text" name="taskName" id="taskName" placeholder="Task">
+            </section>
+
+            <section>
+                <label for="taskDate">Due Date</label>
+                <input type="date" name="taskDate" id="taskDate">
+                <button type="button" id="submitButton">Submit</button>
+            </section>
+        </form>
 
         <div id="content">
 
