@@ -2,6 +2,7 @@ export default class Project {
     constructor(name) {
         this.name = name;
         this.taskArray = [];
+        this.count = -1;
     }
 
     getName() {
@@ -14,5 +15,10 @@ export default class Project {
 
     appendTask(task) {
         this.taskArray.push(task);
+    }
+
+    countInterval() {
+        this.count++;
+        return this.count;
     }
 }

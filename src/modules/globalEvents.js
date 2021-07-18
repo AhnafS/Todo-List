@@ -1,23 +1,19 @@
-import { hideForm, getCurrentProject, getFormInfo, createNewTask, setCurrentProject, taskRender } from "./Render";
+import { hideForm, getCurrentProject, getTaskFormInfo, createNewTask, createNewProject, getProjectFormInfo } from "./Render";
 
 const submit = document.querySelector('#submitButton');
 submit.addEventListener('click', e => {
     hideForm(document.querySelector('#taskForm'));
 
-    const formInfo = getFormInfo();
+    const formInfo = getTaskFormInfo();
     console.log(getCurrentProject());
     createNewTask(getCurrentProject(), formInfo.taskName, formInfo.taskDate);
     console.log(getCurrentProject());
 
 })
 
-const projectEventListiner = function(projectDom, project) {
-    const content = document.querySelector('#content');
-    projectDom.addEventListener('click', e => {
-        content.innerHTML = '';
-        setCurrentProject(project);
-        project.getTaskArray().forEach(task => taskRender(task));
-    });
-}
+const addProject = document.querySelector('#addProject');
+addProject.addEventListener('click', e => {
+    createNewProject(getProjectFormInfo());
+    document.querySelector('#projectName').value = "";
 
-export { projectEventListiner };
+})

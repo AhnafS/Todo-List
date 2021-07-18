@@ -1,9 +1,11 @@
 import Task from './Task';
-import projectEventListiner from './privateEvents'
+import Project from './Project';
+import projectEventListiner from './privateEvents.js'
 
 let currentProject;
 
 const projectRender = function(project) {
+    const addProjectButton = document.querySelector('#addProject');
     const nav = document.querySelector('#projects');
     let projectDom = document.createElement('h3');
     projectDom.textContent = project.getName();
@@ -25,8 +27,13 @@ const taskRender = function(task) {
     content.appendChild(taskDiv);
 }
 
+const getProjectFormInfo = function() {
+    const projectName = document.querySelector('#projectName');
+    return projectName.value;
+}
 
-const getFormInfo = function() {
+
+const getTaskFormInfo = function() {
     const form = document.querySelector('#taskForm');
     const taskName = document.querySelector('#taskName').value;
     const taskDate = document.querySelector('#taskDate').value;
@@ -48,17 +55,24 @@ const setCurrentProject = function(project) {
 }
 
 const createNewTask = function(project, taskName, taskDate) {
-    const newTask = new Task(taskName, taskDate);
+    const newTask = new Task(taskName, taskDate, project);
     project.appendTask(newTask);
     taskRender(newTask);
 }
 
+const createNewProject = function(name) {
+    const newProject = new Project(name);
+    projectRender(newProject);
+}
+
 export {
     projectRender,
-    getFormInfo,
+    getTaskFormInfo,
     hideForm,
     getCurrentProject,
     createNewTask,
     setCurrentProject,
-    taskRender
+    taskRender,
+    createNewProject,
+    getProjectFormInfo
 };

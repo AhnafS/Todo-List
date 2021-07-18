@@ -9,4 +9,4 @@ const projectEventListiner = function(projectDom, project) {
     });
 }
 
-export { projectEventListiner };
+export default projectEventListiner;
