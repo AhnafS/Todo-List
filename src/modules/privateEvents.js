@@ -1,4 +1,4 @@
-import { setCurrentProject, taskRender } from './Render';
+import { setCurrentProject, taskRender, getCurrentProject } from './Render';
 
 const projectEventListiner = function(projectDom, project) {
     const content = document.querySelector('#content');
@@ -9,4 +9,4 @@ const projectEventListiner = function(projectDom, project) {
     });
 }
 
-export default projectEventListiner;
+export { projectEventListiner };

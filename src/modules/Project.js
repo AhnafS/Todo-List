@@ -21,4 +21,12 @@ export default class Project {
         this.count++;
         return this.count;
     }
+
+    removeTask(index) {
+        this.taskArray = this.taskArray.filter((task, i) => {
+            return i != index;
+        })
+        this.count = 0;
+        return this.taskArray;
+    }
 }

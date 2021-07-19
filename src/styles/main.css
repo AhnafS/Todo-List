@@ -24,9 +24,10 @@ nav h3 {
 
 .task {
     display: flex;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     margin: 1em;
-    /* width: */
+    width: 5em;
+    object-fit: contain;
 }
 
 .taskName {
@@ -35,4 +36,8 @@ nav h3 {
 
 .toggleDisplay {
     display: none;
+}
+
+.closeImg {
+    width: 1em;
 }

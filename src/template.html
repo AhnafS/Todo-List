@@ -22,7 +22,7 @@
 
         </nav>
 
-        <form action="taskForm" id="taskForm">
+        <form action="taskForm" id="taskForm" class="toggleDisplay">
             <section>
                 <label for="taskName">Task</label>
                 <input type="text" name="taskName" id="taskName" placeholder="Task">
@@ -35,8 +35,10 @@
             </section>
         </form>
 
-        <div id="content">
-
+        <div id="taskDiv">
+            <div id="content">
+            </div>
+            <button id="addTask" type="button">Add Task</button>
         </div>
     </div>
 

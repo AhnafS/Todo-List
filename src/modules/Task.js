@@ -1,8 +1,3 @@
-// function countInterval() {
-//     count++;
-//     return count;
-// }
-
 export default class Task {
     constructor(name, dueDate = 'No Date', project) {
         this.name = name;
