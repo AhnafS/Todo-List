@@ -5,6 +5,7 @@ const projectArray = JSON.parse(window.localStorage.getItem('projectStorage'))
 
 
 const loadStorageProjects = function() {
+    console.log(projectArray);
     projectArray.forEach(storageProject => {
         const newProject = new Project(storageProject.name);
 
@@ -15,5 +16,6 @@ const loadStorageProjects = function() {
         projectRender(newProject);
     })
 }
+
 
 export default loadStorageProjects;

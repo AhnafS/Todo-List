@@ -1,7 +1,7 @@
 import Task from './Task';
 import Project from './Project';
 import { projectEventListiner } from './privateEvents.js'
-import { removeTaskAdder } from './globalEvents.js';
+import { removeTaskAdder, removeProjectAdder } from './globalEvents.js';
 
 let currentProject;
 let allProjects = [];
@@ -10,14 +10,28 @@ if (window.localStorage.getItem('projectStorage')) {
 }
 
 const projectRender = function(project) {
+    allProjects = turnIntoProjects();
     const nav = document.querySelector('#projects');
-    let projectDom = document.createElement('h3');
-    projectDom.textContent = project.getName();
+    let projectDom = document.createElement('div');
+    projectDom.classList.add('project-item');
+    let projectName = document.createElement('h3');
+    projectDom.appendChild(projectName);
+    projectName.classList.add('projectName');
+    projectName.textContent = project.getName();
     projectEventListiner(projectDom, project);
     nav.appendChild(projectDom);
+
+    const closeImg = new Image();
+    closeImg.src = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fa%2Fa9%2FBlack_x.svg%2F896px-Black_x.svg.png&f=1&nofb=1";
+    closeImg.classList.add('closeImg');
+    removeProjectAdder(closeImg);
+    projectDom.prepend(closeImg);
+
+    renderProjectIndex();
 }
 
 const taskRender = function(task) {
+    console.log(task);
     const content = document.querySelector('#content');
     const taskDiv = document.createElement('div');
     taskDiv.classList.add('task');
@@ -66,10 +80,9 @@ const setCurrentProject = function(project) {
 
 const createNewTask = function(project, taskName, taskDate) {
     const newTask = new Task(taskName, taskDate, project);
-    window.localStorage.setItem('projectStorage', JSON.stringify(allProjects));
     project.appendTask(newTask);
     taskRender(newTask);
-    console.log(window.localStorage.getItem('projectStorage'));
+    window.localStorage.setItem('projectStorage', JSON.stringify(allProjects));
 }
 
 const createNewProject = function(name) {
@@ -85,9 +98,17 @@ const clearTask = function() {
     content.innerHTML = '';
 }
 
+const clearProjects = function() {
+    const projects = document.querySelector('#projects');
+    projects.innerHTML = '';
+}
+
 const loadAllTask = function() {
-    const content = document.querySelector('#content');
     getCurrentProject().getTaskArray().forEach(task => taskRender(task));
+}
+
+const loadAllProject = function() {
+    allProjects.forEach(project => projectRender(project));
 }
 
 const clearTaskInfoValue = function() {
@@ -105,6 +126,43 @@ const loadSavedProjects = function() {
     })
 }
 
+const renderProjectIndex = function() {
+    const projectDiv = document.querySelector('#projects').childNodes;
+    let count = 0;
+    projectDiv.forEach(project => {
+        if (project.tagName == 'DIV') {
+            project.setAttribute('data-index', count);
+            count++;
+        }
+    })
+}
+
+const removeProject = function(index) {
+    allProjects = allProjects.filter((project, i) => {
+        return i != index;
+    })
+    window.localStorage.setItem('projectStorage', JSON.stringify(allProjects));
+    return allProjects;
+}
+
+const turnIntoProjects = function() {
+    const finishedArray = [];
+    allProjects.forEach(project => {
+        const newProject = new Project(project.name);
+
+        project.taskArray.forEach(task => {
+            newProject.appendTask(task);
+        })
+
+        finishedArray.push(newProject);
+    })
+    return finishedArray;
+}
+
+
+
+
+
 export {
     projectRender,
     getTaskFormInfo,
@@ -119,5 +177,8 @@ export {
     loadAllTask,
     clearTaskInfoValue,
     allProjects,
-    loadSavedProjects
+    loadSavedProjects,
+    loadAllProject,
+    clearProjects,
+    removeProject
 };

@@ -1,4 +1,20 @@
-import { hideForm, getCurrentProject, getTaskFormInfo, createNewTask, createNewProject, getProjectFormInfo, projectRender, taskRender, clearTask, loadAllTask, clearTaskInfoValue, allProjects } from "./Render";
+import {
+    hideForm,
+    getCurrentProject,
+    getTaskFormInfo,
+    createNewTask,
+    createNewProject,
+    getProjectFormInfo,
+    projectRender,
+    taskRender,
+    clearTask,
+    loadAllTask,
+    clearTaskInfoValue,
+    allProjects,
+    loadAllProject,
+    clearProjects,
+    removeProject
+} from "./Render";
 
 const addTask = document.querySelector('#addTask');
 addTask.addEventListener('click', e => {
@@ -13,7 +29,6 @@ submit.addEventListener('click', e => {
     const formInfo = getTaskFormInfo();
     createNewTask(getCurrentProject(), formInfo.taskName, formInfo.taskDate);
     clearTaskInfoValue();
-    console.log(getCurrentProject());
 
 })
 
@@ -27,10 +42,20 @@ addProject.addEventListener('click', e => {
 const removeTaskAdder = function(img) {
     img.addEventListener('click', e => {
         const index = e.target.parentNode.getAttribute('data-index');
-        console.log(getCurrentProject().removeTask(index));
+        getCurrentProject().removeTask(index);
         clearTask();
         loadAllTask();
     });
 }
 
-export { removeTaskAdder };
+const removeProjectAdder = function(img) {
+    img.addEventListener('click', e => {
+        const index = e.target.parentNode.getAttribute('data-index');
+        removeProject(index);
+        clearProjects();
+        loadAllProject();
+    })
+}
+
+
+export { removeTaskAdder, removeProjectAdder };
