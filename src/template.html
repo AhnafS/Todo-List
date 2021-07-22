@@ -11,7 +11,6 @@
 <body>
     <header>
         <h1>Todo List</h1>
-        <button id="signIn">Sign in</button>
     </header>
     <div id="main">
         <nav>
@@ -20,8 +19,8 @@
             </div>
             <form action="projectForm" id="projectForm">
                 <input type="text" name="projectName" id="projectName" placeholder="Project Name">
+                <button id="addProject" type="button">Add Project</button>
             </form>
-            <button id="addProject" type="button">Add Project</button>
 
         </nav>
 
@@ -39,11 +38,17 @@
         </form>
 
         <div id="taskDiv">
-            <div id="content">
-            </div>
-            <button id="addTask" type="button">Add Task</button>
+            <div id="content"></div>
         </div>
+        <button id="addTask" class="toggleDisplay" type="button">Add Task</button>
     </div>
+
+    <footer>
+        <h4>Copyright © 2021 AhnafS</h4>
+        <a href="https://github.com/AhnafS">
+            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngarts.com%2Ffiles%2F8%2FGithub-Logo-Transparent-Background-PNG.png&f=1&nofb=1" alt="" id="githubIcon">
+        </a>
+    </footer>
 
 </body>
 

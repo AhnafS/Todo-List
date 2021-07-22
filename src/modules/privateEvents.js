@@ -7,6 +7,11 @@ const projectEventListiner = function(projectDom, project) {
         setCurrentProject(project);
         project.getTaskArray().forEach(task => taskRender(task));
     });
+
+    projectDom.addEventListener('click', e => {
+        const addTask = document.querySelector('#addTask');
+        addTask.classList.remove('toggleDisplay');
+    }, { once: true })
 }
 
 export { projectEventListiner };

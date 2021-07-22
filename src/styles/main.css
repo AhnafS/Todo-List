@@ -1,17 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Neucha&display=swap');
 html,
 body {
     margin: 0;
     height: 100%;
+    font-family: 'Neucha', cursive;
 }
 
 #main {
     display: flex;
+    margin: 0;
     height: 100%;
+    width: 100%;
 }
 
 nav {
-    margin: 1em 5em;
+    margin: .1px 5em 0 0;
     height: 100%;
+    width: 100%;
 }
 
 nav h3 {
@@ -24,20 +29,154 @@ nav h3 {
 
 .task {
     display: flex;
-    /* border: 1px solid black; */
+    justify-content: left;
     margin: 1em;
     width: 5em;
     object-fit: contain;
+    width: 100%;
+    font-size: 1.5em;
 }
 
 .taskName {
-    margin-right: 2em;
+    margin-right: 15px;
+    width: 100%;
 }
+
+.closeImg {
+    width: 1em;
+    margin: 1em;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid black;
+    font-size: 1.6em;
+    background-color: #334257;
+    color: white;
+}
+
+nav {
+    flex-direction: column;
+    border-right: 1px solid black;
+    width: 20%;
+    background-color: #EEEEEE;
+}
+
+#projects {
+    border-bottom: 1px solid black;
+    width: 100%;
+}
+
+.project-item {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    overflow: scroll;
+    font-size: 1.3em;
+}
+
+#projectForm {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 1em;
+}
+
+#main {
+    margin: 0;
+    width: 100%;
+    background-color: #EEEEEE;
+}
+
+#taskForm {
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+    border-radius: 1em;
+    padding: 3em;
+}
+
+#taskForm section {
+    margin-bottom: 1em;
+    font-size: 1.5em;
+}
+
+#taskForm input[type='text'],
+#taskForm input[type='date'] {
+    width: 100%;
+    height: 2em;
+}
+
+#taskForm button {
+    width: 50%;
+    height: 2em;
+    font-size: 1.1em;
+}
+
+
+/* Using JS */
 
 .toggleDisplay {
     display: none;
 }
 
-.closeImg {
-    width: 1em;
+#taskDiv {
+    width: 100%;
+}
+
+.taskDate {
+    width: 100%;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+    border: 1px solid black;
+    object-fit: contain;
+    width: 100%;
+    background-color: #334257;
+    color: white;
+}
+
+footer a {
+    width: 3em;
+    height: 100%;
+}
+
+#githubIcon {
+    width: 100%;
+    height: 2em;
+    border-radius: 100%;
+}
+
+button {
+    font-family: 'Neucha', cursive;
+}
+
+input {
+    font-family: 'Neucha', cursive;
+}
+
+#addTask {
+    font-size: 2em;
+    background-color: #476072;
+}
+
+#projectForm button {
+    font-size: 1.2em;
+}
+
+#projectForm input {
+    font-size: 1em;
 }

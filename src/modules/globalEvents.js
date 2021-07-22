@@ -57,5 +57,4 @@ const removeProjectAdder = function(img) {
     })
 }
 
-
 export { removeTaskAdder, removeProjectAdder };
